@@ -75,7 +75,7 @@ function Index() {
     setLoading(true);
     setOutput("");
     try {
-      const res = await fetch("https://priyansh-bot.instatunnel.my", {
+      const res = await fetch("https://priyansh-humanize-bot-98.instatunnel.my/humanize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: input }),
