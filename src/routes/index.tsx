@@ -136,6 +136,21 @@ function Index() {
 
         <div className="grid md:grid-cols-2 gap-6">
           <section className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 shadow-[var(--shadow-elegant)]">
+            <div className="mb-4">
+              <label htmlFor="hook" className="text-sm font-semibold block mb-2">
+                Manual Human Hook <span className="text-muted-foreground font-normal">(Optional)</span>
+              </label>
+              <Input
+                id="hook"
+                value={hook}
+                onChange={(e) => setHook(e.target.value)}
+                placeholder="e.g. So I was thinking the other day about how..."
+                className="bg-input/40 border-border focus-visible:ring-primary/40"
+              />
+              <p className="text-xs text-muted-foreground mt-1.5">
+                Type the first 10-15 words yourself to break detector tracking.
+              </p>
+            </div>
             <div className="flex items-center justify-between mb-3">
               <label htmlFor="input" className="text-sm font-semibold">Original text</label>
               <span className="text-xs text-muted-foreground">{wordCount(input)} words</span>
