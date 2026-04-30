@@ -32,11 +32,15 @@ export const Route = createRootRoute({
       { title: "Humanizer Bot — Make AI Text Sound Natural" },
       { name: "description", content: "Transform AI-generated text into natural, human-sounding writing in seconds." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Humanizer Bot" },
-      { property: "og:description", content: "Transform AI-generated text into natural, human-sounding writing." },
+      { property: "og:title", content: "Humanizer Bot — Make AI Text Sound Natural" },
+      { property: "og:description", content: "Transform AI-generated text into natural, human-sounding writing in seconds." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Humanizer Bot — Make AI Text Sound Natural" },
+      { name: "twitter:description", content: "Transform AI-generated text into natural, human-sounding writing in seconds." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ae12de05-0221-45a7-bf30-cdc121251ddd/id-preview-1ffb2a7b--8c60ce5a-d437-4249-8af0-f11b7a6c1966.lovable.app-1777542910180.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ae12de05-0221-45a7-bf30-cdc121251ddd/id-preview-1ffb2a7b--8c60ce5a-d437-4249-8af0-f11b7a6c1966.lovable.app-1777542910180.png" },
     ],
     links: [
       {
