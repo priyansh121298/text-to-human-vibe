@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 import { Sparkles, Copy, Check, Loader2, Wand2 } from "lucide-react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
@@ -61,6 +62,7 @@ function humanizeText(input: string): string {
 
 function Index() {
   const [input, setInput] = useState("");
+  const [hook, setHook] = useState("");
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -81,7 +83,8 @@ function Index() {
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       const data = await res.json();
       if (typeof data?.result !== "string") throw new Error("Invalid response");
-      setOutput(data.result);
+      const prefix = hook.trim();
+      setOutput(prefix ? `${prefix} ${data.result}` : data.result);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Something went wrong";
       toast.error(msg);
