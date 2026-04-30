@@ -65,16 +65,29 @@ function Index() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const handleHumanize = () => {
+  const handleHumanize = async () => {
     if (!input.trim()) {
       toast.error("Please enter some text first");
       return;
     }
     setLoading(true);
-    setTimeout(() => {
-      setOutput(humanizeText(input));
+    setOutput("");
+    try {
+      const res = await fetch("https://priyansh-bot.instatunnel.my", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: input }),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      const data = await res.json();
+      if (typeof data?.result !== "string") throw new Error("Invalid response");
+      setOutput(data.result);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Something went wrong";
+      toast.error(msg);
+    } finally {
       setLoading(false);
-    }, 700);
+    }
   };
 
   const handleCopy = async () => {
