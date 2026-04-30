@@ -75,7 +75,7 @@ function Index() {
     setLoading(true);
     setOutput("");
     try {
-      const res = await fetch("https://priyansh-final-bot.instatunnel.my/humanize", {
+      const res = await fetch("https://corsproxy.io/?https%3A%2F%2Fpriyansh-final-bot.instatunnel.my%2Fhumanize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: input }),
