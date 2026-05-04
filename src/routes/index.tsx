@@ -85,7 +85,7 @@ function Index() {
     setLoading(true);
     setOutput("");
     try {
-      const res = await fetch("https://n8jsne.instatunnel.my/humanize", {
+      const res = await fetch("https://aetcni.instatunnel.my/humanize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: input }),
