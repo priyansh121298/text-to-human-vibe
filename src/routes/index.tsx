@@ -67,9 +67,19 @@ function Index() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  const MAX_INPUT_CHARS = 5000;
+  const trimmedLen = input.trim().length;
+  const isEmpty = trimmedLen === 0;
+  const isTooLong = input.length > MAX_INPUT_CHARS;
+  const isInvalid = isEmpty || isTooLong;
+
   const handleHumanize = async () => {
-    if (!input.trim()) {
+    if (isEmpty) {
       toast.error("Please enter some text first");
+      return;
+    }
+    if (isTooLong) {
+      toast.error(`Text is too long. Max ${MAX_INPUT_CHARS} characters.`);
       return;
     }
     setLoading(true);
@@ -153,15 +163,24 @@ function Index() {
             </div>
             <div className="flex items-center justify-between mb-3">
               <label htmlFor="input" className="text-sm font-semibold">Original text</label>
-              <span className="text-xs text-muted-foreground">{wordCount(input)} words</span>
+              <span className={`text-xs ${isTooLong ? "text-destructive" : "text-muted-foreground"}`}>
+                {wordCount(input)} words · {input.length}/{MAX_INPUT_CHARS}
+              </span>
             </div>
             <Textarea
               id="input"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Paste your AI-generated text here..."
+              maxLength={MAX_INPUT_CHARS}
+              aria-invalid={isTooLong}
               className="min-h-[360px] resize-none bg-input/40 border-border focus-visible:ring-primary/40 text-base leading-relaxed"
             />
+            {isTooLong && (
+              <p className="text-xs text-destructive mt-1.5">
+                Text exceeds the {MAX_INPUT_CHARS}-character limit.
+              </p>
+            )}
           </section>
 
           <section className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 shadow-[var(--shadow-elegant)]">
@@ -193,7 +212,7 @@ function Index() {
           <Button
             size="lg"
             onClick={handleHumanize}
-            disabled={loading || !input.trim()}
+            disabled={loading || isInvalid}
             className="px-10 py-6 text-base font-semibold rounded-xl text-primary-foreground border-0 transition-[var(--transition-smooth)] hover:scale-[1.02] hover:shadow-[var(--shadow-glow)]"
             style={{ backgroundImage: "var(--gradient-primary)" }}
           >
