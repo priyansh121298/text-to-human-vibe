@@ -5,3 +5,4 @@
 ## Pages
 
 - [Home](/): Paste AI text and get a humanized version.
+- [AI Detector](/detector): Score text on AI-likelihood signals like burstiness and stock connectors.
