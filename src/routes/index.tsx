@@ -1,9 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { Sparkles, Copy, Check, Loader2, Wand2 } from "lucide-react";
+import { Sparkles, Copy, Check, Loader2, Wand2, ScanLine } from "lucide-react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -231,7 +231,13 @@ function Index() {
         </div>
 
         <footer className="mt-16 text-center text-xs text-muted-foreground">
-          Built for clarity. Your text never leaves your browser.
+          <Link
+            to="/detector"
+            className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ScanLine className="w-3.5 h-3.5" />
+            Check your text with the AI detector
+          </Link>
         </footer>
       </main>
     </div>
