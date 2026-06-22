@@ -1,0 +1,7 @@
+# Text to Human
+
+> Humanize AI-generated text so it reads naturally and bypasses AI detectors.
+
+## Pages
+
+- [Home](/): Paste AI text and get a humanized version.
